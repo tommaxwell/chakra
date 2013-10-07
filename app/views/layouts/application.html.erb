@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chakra</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet prefetch' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet prefetch' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,700' rel='stylesheet prefetch' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet prefetch">
+</head>
+<body>
+
+<% if signed_in?(:user) %>
+
+<div id="fixed_nav">
+	<h3 id="logo"><a href="/">chakra</a></h3>
+	<i class="icon-search" id="nav-search-icon"></i>
+	<%= form_tag(folders_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+		<div class="input-append">
+			<%= text_field_tag :search, params[:search], placeholder: "Search for anything", :class => "form-field" %>
+		</div>
+	<% end %>
+	<i class="icon-check-minus" id="nav-show-sidebar" style="display:none"></i>
+	<div id="settings-links">
+		<a href="/users/sign_out" class="top-icons" id="last"><i class="icon-signout"></i></a>
+		<a href="/users/edit" class="top-icons" ><i class="icon-cog"></i></a>
+	</div>
+</div>
+
+<% else %>
+
+<div id="fixed_nav">
+	<h3><a href="/">chakra</a></h3>
+</div>
+
+<% end %>
+	
+<%= yield %>
+<%= javascript_include_tag "application" %>
+<script type="text/javascript" id="jscripts">
+
+		$(document).ready(function() {
+
+			var firstJournal = $("#submission-list-container > div:nth-of-type(1)").attr('data-id');
+			$.get("/folders/show/" + firstJournal + "/", {folder: firstJournal}, null, "script");
+
+			$("#submission-list-container > div").click(function(){
+        var rightPanel = $('#right-panel');
+				if (rightPanel) {
+					$('#right-panel').remove();
+					$.get("/folders/show/" + $(this).attr('data-id') + "/", {folder: $(this).attr('data-id')}, null, "script");
+				}else{
+					$.get("/folders/show/" + $(this).attr('data-id') + "/", {folder: $(this).attr('data-id')}, null, "script");
+				}
+			});
+
+			$("#search-form").hide();
+	
+			$("#nav-search-icon").hover(function(){
+				$(this).hide();
+				$("#search-form").fadeIn('slow');
+			});
+
+			$("#search-form").mouseout(function(){
+				$(this).fadeOut('fast');
+				$("#nav-search-icon").show();
+			});
+
+			$('#postcreate').submit(function(){
+				$.ajax({
+					url: "/submissions",
+					type: "POST",
+					dataType: "json",
+					data: $("#postcreate").val
+				});
+
+				return false;
+			});
+
+			$('[data-modal="modal-5"]').click(function(){
+   				$("#modal-5").addClass("md-show");
+   		});
+
+   		$('[data-modal="modal-4"]').click(function(){
+   			$("#modal-4").addClass("md-show");
+   		});
+      
+
+
+      $('body').on('new', function(){
+       
+  
+        $('#content-edit-partial').highlighter({
+          'selector': '#meta-popup',
+          'complete': function(data){ 
+            $("#meta-popup").css({
+              position:'absolute',
+              left: data.offsetLeft,
+              top: data.offsetTop
+            });
+  
+            $("#nested-button").attr("data-highlight", data); 
+          }
+        });
+  
+        $("#meta-popup").mousedown(function(){
+          return false;
+        });
+  
+        $(document).click(function(){
+          $("#meta-popup").fadeOut('fast');
+        });
+  
+  
+      });
+    
+
+
+   		$('body').on('show', function(){
+
+   			entryAJAX();
+
+   			d3JSON();
+        
+        journalStats();
+        
+
+   			$("#create-journal-drop").hide();
+          
+   			$("#journal-create-button").click(function(e){
+	   			var btn = $(this);
+	   			e.stopPropagation();
+	   			$('#create-journal-drop').css({
+	   				position:'absolute',
+	   				left: 9 + "px"
+   				}).fadeIn('fast');
+			  });
+          
+        $('#create-journal-drop').click(function(e){
+          e.stopPropagation();
+        });
+
+   		});
+
+   			$(document).click(function(){
+   				$("#create-journal-drop").fadeOut('fast');
+   			});
+		});
+
+
+</script>
+</body>
+</html>

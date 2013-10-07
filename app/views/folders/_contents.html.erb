@@ -1,0 +1,102 @@
+
+		<div id="right-panel" class="resize">
+			<div id="top" class="top">
+				<div id="folder-left">
+					<h3><%= @folder.title %></h3>
+				</div>
+				<ul id="inner-list">
+					<button class="btn" id="journal-create-button">New Journal</button>
+					<div id="create-journal-drop">
+						<form action="/folders" method="post">
+							<%= hidden_field_tag :user_id, current_user.id %> 
+							<%= hidden_field_tag :parent_id, @folder.id %>
+							<h3 id="journal-create-partial">New Sub-Journal</h3>
+							<input type="text" id="titleinput" name="title" placeholder="Title it">
+							<button type="submit" class="md-close folder-create" id="folder-create">Create</button>
+            </form>
+					</div>
+					<button class="btn" id="entry-button">New Entry</button>
+        </ul>
+			</div>
+			<svg id="submission-circles"></svg>
+      <div id="stats-footer">
+        <h3 id="word-count"></h3>
+      </div>
+		</div>
+
+	<script type="text/javascript">
+
+		d3JSON = function(){
+			d3.json("/folders/<%= @folder.id %>.json", function(error, data) {
+
+				var circle;
+
+				var svg = d3.select("body").selectAll("svg");
+
+				circle = svg.selectAll("circle")
+				.data(data.submissions, Array);
+
+
+				circle.enter().append("circle")
+				.style("fill", "#c0392b")
+				.attr("id", function(d){ return d.id; })
+				.attr("data-name", function(d){ return d.title; })
+				.on("click", function(d) {
+          if (d.children > 0){
+						console.log(d.children);
+						$.get("/parent_submissions/", {submission: d.id}, null, "script");
+					}else{
+						$.get("/new_submission/", {submission: d.id}, null, "script");
+					}
+
+				})
+				.attr("cy", 90)
+				.attr("cx", function(d){
+					return (d.content.length / 2) * 10 + "px";
+				})
+				.attr("r", 50);
+
+				$("svg circle").tipsy({
+					gravity: 'w',
+					html: true,
+					title: function() {
+						var d = $(this).closest("svg circle").attr("data-name");
+						return d;
+					}
+				});
+
+				circle.exit().remove();
+
+			});
+		};
+    
+    entryAJAX = function(){
+      $("#entry-button").click(function(){
+        $.ajax({
+					url: "/submissions",
+					type: "POST",
+					dataType: "json",
+          data: {folder_id: <%= @folder.id %>},
+          success: function(data){
+            $.get("/new_submission/", {submission: data.id}, null, "script");      
+          }
+				});
+      });      
+    };
+    
+    journalStats = function(){
+        
+      var wordCount = 0;
+      <% @folder.submissions.each do |submission| %>
+        <% if submission.content.nil? %>
+          wordCount += 0;
+        <% else %>
+          var theWords = '<%=j submission.content %>'.split(" ");    
+          wordCount += theWords.length;
+        <% end %>
+      <% end %>
+      $("#word-count").text(wordCount + " Words");
+        
+    };
+      
+</script>

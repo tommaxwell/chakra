@@ -1,0 +1,101 @@
+
+ //= require_self
+ //= require_tree .
+ 
+
+ #fixed_nav {
+ 	position:fixed;
+ 	width:100%;
+ 	height:40px;
+ 	z-index:2;
+ 	background-color:#333;
+ 	top:0;
+  border-bottom:1px solid #666;
+  }
+
+  #logo a {
+    color:white;
+  }
+
+ #fixed_nav h3 {
+ 	text-align:left;
+ 	margin-left:20px;
+  font-family: 'Lobster', cursive;
+  font-weight:400 !important;
+  font-size:24px;
+  color:white !important;
+ }
+
+ #nav {
+  font-family: 'MedioRegular', "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin:10px 0 0 10px;
+  padding:0;
+  list-style:none;
+  line-height: 25px;
+  }    
+
+#nav li {
+  float:left;
+  display:block;
+  width:167px;
+  position:relative;
+  z-index:500;
+  margin:0 1px;
+  }
+
+#nav li a {
+  display:block;
+  padding:0 0 0 20px;
+  height:25px;
+  text-decoration:none;
+  text-align:left;
+  color:white !important;
+  }    
+
+#nav ul {
+  position:absolute;
+  left:0;
+  display:none;
+  margin:0 0 0 -1px;
+  padding:0;
+  list-style:none;
+
+  }
+
+#nav ul li {
+  width:165px;
+  float:left;
+  border-left:1px solid #111;
+  border-right:1px solid #111;
+  }
+
+
+#nav ul li.underline {
+  border-bottom:1px solid #111;
+  }
+
+#nav ul a {
+  display:block;  
+  height:25px;
+  padding:0 0 0 23px;
+  background:url(../images/spacer.gif) repeat;
+  color:white !important;
+  }
+
+#nav ul a:hover {
+  text-decoration:none;    
+  }
+
+#welcome {
+  color:#2c3e50;
+  position:absolute;
+  bottom:11px;
+  left:160px;
+}
+
+.navbar-form .btn {
+  position:relative;
+  top:0.2px;
+}

@@ -1,0 +1,5 @@
+<ul>
+	<% @folders.each do |folder| %>
+	<li><%= link_to folder.title, :action => "show", :id => folder.id %></li>
+	<% end %>
+</ul>

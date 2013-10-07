@@ -1,0 +1,4 @@
+<% if can? :read, Submission %>
+	<h1><%= submission.title %></h1>
+	<p><%= submission.content %></p>
+<% end %>

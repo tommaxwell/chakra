@@ -1,0 +1,23 @@
+<div id="parent-submission">
+	<div id="preview-parent-top">
+		<div id="preview-parent-bottom">
+			<h1 style="margin-bottom:20px !important; font-size:1.7em"><%= @submission.title %><a href="#"><i class="icon-link"></i></a></h1>
+			<div id="parent-updated">Modified <%= @submission.updated_at.strftime("%B%e, %Y") %></div>
+			<div id="preview-text">
+				<span id="parent-preview">PREVIEW:</span><%= @submission.content %>
+			</div>
+			<div id="parent-stats">
+				<span><%= @submission.children.count %> Children</span> · <span><span id="character-count"></span> Characters</span>
+			</div>
+		</div>
+		<i class="icon-remove"></i>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var characterCount = 0;	
+	<% @submission.children.each do |x| %>
+		characterCount += <%= x.content.length %>
+	<% end %>
+	$("#character-count").text(characterCount);
+</script>

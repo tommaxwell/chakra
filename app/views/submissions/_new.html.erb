@@ -1,0 +1,42 @@
+<div id="entry-container">
+	<div id="entry-meta">
+		<span id="success-indicate" style="color:green">Saved</span>
+		<button type="button" class="btn" id="close"><i class="icon-remove" id="entry-cancel-x"></i>Cancel</button>
+	</div>
+	<div id="entry-create-partial">
+		<div id="title-create-partial" name="title" contenteditable="true" data-placeholder='Title it' style="color:black"></div>
+		<div id="content-create-partial" name="content" contenteditable="true" data-placeholder='Write anything' style="color:gray"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+
+		$("#success-indicate").hide();
+
+		$("#close").click(function(){
+			$("#entry-container").remove();
+		});
+
+		$(function(){
+			if ($("#title-create-partial").text() !== 0) {
+				setTimeout(autoSavePost, 6000);
+			}
+		});
+
+		function autoSavePost(){
+			$.ajax({
+				type: "POST",
+				url: "/submissions",
+				dataType: "json",
+				data: {title: $("#title-create-partial").text(), content: $("#content-create-partial").text()},
+				success: function(){
+					$("#success-indicate").fadeIn().delay(4000).fadeOut();
+				}
+			});
+			setTimeout(autoSavePost, 6000);
+		}
+
+	});
+</script>

@@ -1,0 +1,48 @@
+<div id="container-edit" class="entry-window">
+	<div id="meta-bar" class="top">
+	<span id="location-span" style="position:relative; float:left;">In <span id="journal-location"></span></span>
+		<div id="entry-meta" class="meta-info">
+			<i class="icon-trash icons top-icons" id="delete-submission-icon"></i>
+			<i class="icon-remove icons top-icons" id="close-edit"></i>
+			<i class="icon-ok icons top-icons" id="save-edit"></i>
+		</div>
+	</div>
+	<div id="entry-edit-partial" class="contain-entry">
+		<div id="title-edit-partial" class="title-partial" name="title" contenteditable="true" style="color:black"></div>
+		<div id="meta-popup"><button type="button" class="btn" id="nested-button">Create Nested Entry</button></div>
+		<div id="content-edit-partial" class="content-partial" name="content" contenteditable="true" style="color:gray"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#save-edit").click(function(){
+		$.ajax({
+			type:"POST",
+			url:"/submissions",
+			dataType:"json",
+			data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @folder.id %>}
+		});
+	})
+
+	$("#meta-popup button").click(function(){
+		var highlight = $("#nested-button").attr("data-highlight");
+	})
+
+	$("#delete-submission-icon").click(function(){
+		var r = window.confirm("Are you sure? This cannot be undone.");
+		if(r == true){
+			$.ajax({
+				url:"/submissions/" + $("#container-edit").attr("data-id"),
+				type: "POST",
+				dataType: "json",
+				data: {"_method": "delete"},
+				complete: function(){
+					location.href = "/"
+				}
+			});
+		}
+		else{
+
+		}
+	})
+</script>

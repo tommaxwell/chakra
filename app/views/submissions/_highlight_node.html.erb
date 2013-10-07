@@ -1,0 +1,63 @@
+<div id="container-edit" class="entry-window">
+	<div id="meta-bar" class="top">
+    <span id="location-span" style="position:relative; float:left;">Annotating <span id="journal-location"><%= @submission.title %></span></span>
+		<div id="entry-meta" class="meta-info">
+			<i class="icon-remove icons top-icons" id="close-edit"></i>
+			<i class="icon-ok icons top-icons" id="save-edit"></i>
+		</div>
+    <div id="saved-successfully">
+      <span style="color:white">Saved Successfully.</span>
+    </div>
+	</div>
+	<div id="entry-edit-partial" class="contain-entry">
+		<div id="title-edit-partial" class="title-partial" name="title" contenteditable="true" style="color:black" data-placeholder="Title here (optional)"></div>
+		<div id="content-edit-partial" class="content-partial" name="content" contenteditable="true" style="color:gray" data-placeholder="Write here."></div>
+	</div>
+  <i class="icon-fullscreen"></i>
+</div>
+
+<script type="text/javascript">
+	$("#save-edit").click(function(){
+		$.ajax({
+			type:"POST",
+			url:"/submissions/",
+			dataType:"json",
+      data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @submission.folder_id %>, parent_id: <%= @submission.id %>},
+			complete: function(){
+				$("#saved-successfully").fadeIn( 400 ).delay( 1400 ).fadeOut( 400 );
+			}
+		});
+	})
+  
+  $('#close-edit').click(function(){
+    var title = $("#title-edit-partial").text();
+    var content = $("#content-edit-partial").text();
+    if( !title && !content ) {
+      $("#container-edit").remove();
+    }else{
+      var r = window.confirm("Would you like to save any changes?");
+      if(r == true){
+        $.ajax({
+          type:"POST",
+          url:"/submissions/",
+          dataType:"json",
+          data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @submission.folder_id %>, parent_id: <%= @submission.id %>}
+        });
+        $("#container-edit").remove();
+      }else{
+        $("#container-edit").remove();
+      };
+    };
+  });
+    
+  $(".icon-fullscreen").click(function(){
+    $(".entry-window").css({
+      "max-width":"100%",
+      "top": "0"
+    });
+  });
+
+    
+    
+    
+</script>

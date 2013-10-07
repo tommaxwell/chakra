@@ -1,0 +1,59 @@
+// Place all the styles related to the submissions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+p {
+	line-height:22px;
+	margin-bottom:0;
+}
+
+#submission {
+	font-size:1.3em;
+	margin-bottom:10px;
+	text-align:left;
+	padding-bottom:12px;
+	line-height:0;
+
+}
+
+.page-header {
+	margin-top:10px;
+}
+
+#submission-container {
+  position: relative;
+  top: 200px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  background:white;
+}
+
+.form-elements {
+	position:relative;
+	width:100%;
+	top:50px;
+	margin:0 auto;
+}
+
+.edit_form{
+	position:relative;
+	width:100%;
+	max-width:400px;
+	margin: 0 auto;
+	top:150px;
+}
+
+#edit_return {
+	position:relative;
+	float:left;
+	margin-left: 20px;
+	top:200px;
+}
+
+.edit_butt {
+	margin-top:10px;
+}

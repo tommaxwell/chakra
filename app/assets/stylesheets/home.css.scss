@@ -1,0 +1,969 @@
+body {
+	background-color: white !important;
+}
+
+input, select, textarea, button {
+	outline:none;
+}
+
+input[type="text"] {
+	height:27px !important;
+	font-size:16px;
+	padding:4px 8px;
+	word-spacing:1pt;
+	padding-bottom:6px;
+}
+
+.md-content button {
+	position:relative;
+	margin-top:25px !important;
+}
+
+.md-modal {
+	top:30% !important;
+}
+
+[contenteditable="true"]:active, [contenteditable="true"]:focus{
+	border:none;
+	outline:none;
+}
+
+#header {
+	position:relative; 
+	top:35px;
+	text-align:center;
+}
+
+#postSubmit {
+	position:relative;
+	width:100%;
+	max-width:400px;
+	float:left;
+	margin-left:20px;
+	top:20px;
+}
+
+textarea, input {
+	width:100%;
+	resize:none;
+}
+
+#submission-list-container {
+	background-color: white;
+	position:absolute;
+	bottom:34px;
+	top:74px;
+	width:98%;
+	overflow:auto;
+	min-width:188px;
+	border: 1px solid rgba(189, 195, 199, 0.8);
+	border-left:none;
+	z-index:0;
+}
+
+#submission-list-container a {
+	font-weight:800;
+}
+
+#list-header {
+	position:absolute;
+	top:40px;
+	height:35px;
+	width:98%;
+	min-width:188px;
+	border-right:1px solid #666;
+	border-bottom:1px solid #666;
+	z-index:1;
+	word-spacing:1pt;
+  background-color:#333;
+  box-shadow:-2px 1px 2px 1px #ccc;
+}
+
+#submission-header {
+	position:absolute;
+	left:27%;
+	top:40px;
+	height:50px;
+	width:27%;
+	min-width:188px;
+	background-color:white;
+	border-right:1px solid #bdc3c7;
+	border-bottom:1px solid #bdc3c7;
+	box-shadow:0px 2px 2px #DDD;
+	z-index:1;
+}
+
+#submission-header h3 {
+	font-size:19px;
+	text-align:left;
+	padding:6px 0 0 12px;
+	color:#c0392b;
+}
+
+#list-header h3 {
+	display:inline;
+	font-size:16px;
+	text-align:left;
+	font-weight:600;
+	position:relative;
+	top:1px;
+  left:13px;
+}
+
+a:hover {
+	text-decoration:none;
+	color: #08c;
+}
+
+#indexSubmissions {
+	position:relative;
+	width:100%;
+	min-width:300px;
+	margin:0 auto;
+	height:100%;
+	list-style-type: none;
+}
+
+#indexSubmissions li {
+	position:relative;
+	width:100%;
+	height:auto;
+	border-bottom:1px solid #7f8c8d;
+	padding: 1px 0 1px 0;
+}
+
+#indexSubmissions li:hover {
+	background-color:#ecf0f1;
+}
+
+#submissionh3 {
+	position:relative;
+	margin-left:10px;
+	font-size:1.2em;
+}
+
+.page-header {
+	text-align:center;
+	background-color: 1px solid black !important;
+}
+
+#edit_button {
+	position:relative;
+	text-align:right;
+}
+
+#indexrow {
+	max-width:800px;
+	position:relative;
+	margin:0 auto;
+	top:20px;
+}
+
+#intro_page_center {
+	position:relative;
+	top:150px;
+	min-width:200px;
+}
+
+#intro_page_center p {
+	text-align:center;
+	position:relative;
+	bottom:5px;
+}
+
+#big_title {
+	font-size: 2.2em;
+}
+
+#big_intro {
+	color:#2c3e50 !important;
+}
+
+#big_title, #big_intro {
+	text-align:center;
+}
+
+.sign_in_up{
+	padding:10px 20px 10px 20px;
+	border-radius: 5px;
+	position:relative;
+	font-weight:600;
+}
+
+.sign_in_up:focus{
+	text-decoration:none;
+}
+
+.sign_in_up:nth-of-type(1) {
+	margin-right:10px;
+	background-color:rgb(46, 204, 113);
+	color:white;
+	transition: background-color 1s;
+	-webkit-transition: background-color 1s;
+}
+
+.sign_in_up:nth-of-type(1):hover {
+	background-color:#27ae60;
+	transition: background-color 1s;
+	-webkit-transition: background-color 1s;
+}
+
+.sign_in_up:nth-of-type(2) {
+	background-color:rgb(52, 152, 219);
+	color:white;
+	transition: background-color 1s;
+	-webkit-transition: background-color 1s;
+}
+
+.sign_in_up:nth-of-type(2):hover {
+	background-color: #2980b9;
+	transition: background-color 1s;
+	-webkit-transition: background-color 1s;
+}
+
+#big_intro {
+	margin:0px !important;
+	position:relative;
+	top:-15px;
+	color:white;
+}
+
+#registration_login {
+	text-align:center;
+	position:relative;
+	min-width:100px;
+	margin-top:35px;
+}
+
+#about_container {
+	position:fixed;
+	bottom:0;
+	height:400px;
+	min-height:100px;
+	width:100%;
+	min-width:200px;
+	background-color:white;
+}
+
+#about_braindb {
+	text-align:left;
+	position:relative;
+	width:100%;
+	max-width:600px;
+	margin:0 auto;
+	list-style-type:none;
+	margin-top:100px;
+}
+
+#about_braindb li{
+	margin:40px; 
+	color:rgba(44, 62, 80,1.0);
+}
+
+h3 small {
+	color:white;
+	font-weight:600;
+	}
+
+h3 {
+	line-height:30px;
+}
+
+.site_container {
+	position:relative;
+	margin-top:50px;
+}
+
+.post-container {
+	color:#2c3e50;
+	border-bottom:1px solid rgba(189, 195, 199, 0.6);
+	word-spacing:1.2pt;
+	font-weight:400;
+}
+
+.post-container:hover {
+	background-color:rgba(189, 195, 199,0.2);
+}
+
+#submissions-header {
+	font-size:20px;
+	padding: 0 0 10px 9px;
+	border-bottom:1px solid black;
+}
+
+#settings-links {
+	position:absolute;
+	top:0;
+	right:40px;
+	width:50%;
+	bottom:10px;
+	font-size:14px;
+}
+
+.top-icons {
+	width:50px !important;
+	height:40px !important;
+	text-align:center;
+	cursor:pointer;
+	display:block;
+	font-size:18px;
+	padding-top:8px;
+	position:relative;
+	float:right;
+	color:white;
+	border-left:1px solid #666;
+	border-right:1px solid #666;
+}
+
+.top-icons:hover {
+	color:#c0392b;
+}
+
+#last {
+	border-left:none;
+	border-right:1px solid #666;
+}
+
+#post-start-container {
+	position:absolute;
+	left:27%;
+	top:90px;
+	bottom:0;
+	width:27%;
+	min-width:188px;
+	background-color:white;
+	border-right:1px solid #95a5a6;
+}
+
+#svg {
+	position:absolute;
+	right:0;
+	top:50px;
+	bottom:0;
+	width:73%;
+	min-width:200px;
+}
+
+#right-hand-column {
+	position:absolute;
+ 	left:0;
+ 	top:0;
+ 	bottom:0;
+ 	width:22%;
+ 	min-width:188px;
+}
+
+#created-time {
+	font-size:10px;
+	font-weight:400;
+	word-spacing:1.2pt;
+	position:relative;
+	top:3px;
+}
+
+#fixed-bottom-container {
+	position:absolute;
+	width:98%;
+	left:0px;
+	bottom:0;
+	height:35px;
+  background-color:#333;
+	border-right:1px solid #666;
+}
+
+#fixed-bottom-container h3 {
+	position:relative;
+	margin-left:11px;
+	font-size:21px;
+	font-family: 'Lobster', cursive;
+	font-weight:400;
+	bottom:8px;
+  left:3px;
+}
+
+#create-journal {
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	width:50px;
+	border-left:1px solid #666;
+}
+
+button {
+	padding:2px 9px !important;
+}
+
+.folder-submissions {
+	padding:10px 0 10px 11px;
+	color:#2c3e50;
+	border-bottom:1px solid #bdc3c7;
+	font-weight:800;
+}
+
+.folder-submissions:hover {
+	background-color:rgba(189, 195, 199,0.3);
+}
+
+#submission-prev {
+	font-weight:400;
+	font-size:12px;
+	margin-left:5px;
+	display:inline-block;
+}
+
+#submission-time {
+	font-weight:400;
+	font-size:10px;
+}
+
+#entry-editable {
+	position:absolute;
+	right:0;
+	top:50px;
+	bottom:0;
+	width:46%;
+	background-color:#f1c40f;
+}
+
+#submission-circles {
+	position:absolute;
+	right:0;
+	bottom:0;
+	width:100%;
+	max-width:100%;
+	z-index:2;
+}
+
+.tooltip {
+	position:absolute;
+	text-align:center;
+	width:60px;
+	height:28px;
+	padding:2px;
+	font: 12px sans-serif;
+	background-color:blue;
+	border:0px;
+	border-radius: 8px;
+}
+
+#right-panel {
+	position:absolute;
+	right:0;
+	bottom:0;
+	top:40px;
+	width:100%;
+	max-width:78.5%;
+
+}
+
+#parent-submission {
+	position:absolute;
+	right:0;
+	bottom:0;
+	top:40px;
+	width:100%;
+	max-width:74%;
+	background-color:white;
+	z-index:5;
+	color:#2c3e50;
+	word-spacing:1.2pt;
+}
+
+.top {
+	position:absolute;
+	top:0;
+	width:100%;
+	height:35px;
+	border-bottom:1px solid rgba(189, 195, 199, 0.6);
+  box-shadow:-1px 1px 1px 1px #eee;
+  background:-webkit-linear-gradient(top, rgba(189, 195, 199,0.2), rgba(189, 195, 199,0.3));
+}
+
+#saved-successfully {
+  position:absolute;
+  display:none;
+  top:35px;
+  height:35px;
+  width:100%;
+  border-bottom:1px solid rgba(189, 195, 199, 0.6);
+  background-color:#27ae60;
+}
+
+#top h3 {
+	margin-left:15px;
+	position:relative;
+	bottom:9px;
+	color:#435452;
+	word-spacing:1.5pt;
+	font-weight:600;
+	font-size:16px;
+}
+
+#parent-indicate {
+	position:absolute;
+	left:25px;
+	top:43px;
+	color:white;
+	padding:2px 5px 2px 5px;
+	border-radius:3px;
+	background-color:#8CAFAD;
+	font-size:12px;
+	z-index:2;
+}
+
+#new-journal-partial {
+	position:absolute;
+	right:0;
+	bottom:0;
+	top:50px;
+	width:100%;
+	max-width:73%;
+	background-color:white;
+}
+
+#journal-form-2 {
+	position:relative;
+	width:100%;
+	max-width:70%;
+	margin:0 auto;
+	top:100px;
+}
+
+.folder-button {
+	position:relative;
+	z-index:1;
+}
+
+#inner-list {
+	position:relative;
+	float:right;
+	right:34px;
+	bottom:43px;
+	top:4px;
+}
+
+.first {
+	margin-right:5px !important;
+}
+
+.navbar-form {
+	position:relative;
+	width:100%;
+	max-width:100px;
+	left:120px;
+	bottom:49px;
+}
+
+.form-field {
+	height:30px !important;
+	border-radius:5px;
+}
+
+.form-field:focus {
+	outline:none;
+}
+
+.form-submit {
+	height:27px !important;
+}
+
+.form-search {
+	height:27px;
+}
+
+#search {
+	border-radius:5px;
+}
+
+.btn-edit {
+	position:relative;
+	bottom:3px;
+	height:27px;
+
+}
+
+#logo {
+	position:relative;
+	bottom:6px;
+}
+
+#create-journal-drop {
+	background-color:rgb(51,51,51);
+	position:relative;
+	top:50px;
+	padding:10px;
+	padding-bottom:0;
+	border-radius:3px;
+	width:100%;
+	max-width:280px;
+	z-index:2;
+	border:1px solid rgba(189, 195, 199, 0.8);
+}
+
+#journal-create-partial {
+	margin:0;
+	margin-left:0 !important;
+	bottom:5px !important;
+	font-size:19px;
+	word-spacing:1pt;
+	color:white !important;
+}
+
+#journal-create-button {
+	position:relative;
+	z-index:3;
+	margin-right:6px;
+}
+
+#delete-button {
+	position:relative;
+	z-index:3;
+}
+
+#loading-indicator {
+	position:relative;
+	float:right;
+	right:100px;
+	top:200px;
+}
+
+#footer-links {
+	display:inline-block;
+	position:relative;
+	float:right;
+	bottom:43px;
+	right:13px;
+	font-size:12px;
+	word-spacing:1pt;
+	color:white;
+	list-style-type:none;
+	opacity:0.8;
+}
+
+#footer-links a {
+	position:relative;
+	float:left;
+	color:white !important;
+}
+
+#footer-links li {
+	position:relative;
+	float:left;
+	margin-right:5px;
+}
+
+.entry-window {
+	width:100%;
+	max-width:78.4%;
+	position:absolute;
+	right:0;
+	bottom:0;
+	top:40px;
+	background-color:white;
+	z-index:4;
+	overflow:auto;
+}
+
+.contain-entry {
+	width:100%;
+	max-width:60%;
+	margin:0 auto;
+	position:relative;
+	top:70px;
+}
+
+.title-partial {
+	color:black;
+	font-size:30px;
+	font-weight:800;
+	margin:20px 0px 30px 20px;
+	word-spacing:1pt;
+}
+
+.content-partial {
+	color:gray;
+	font-size:20px;
+	margin:20px 0px 20px 20px;
+	line-height:1.45;
+	word-spacing:1pt;
+}
+
+#create-entry {
+	position:relative;
+	float:right;
+	margin-top:0;
+}
+
+#close {
+	position:relative;
+	float:right;
+	right:20px;
+}
+
+#edit-journal-pencil {
+	position:relative;
+	float:right;
+	bottom:40px;
+	right:10px;
+	opacity:0.8;
+}
+
+#edit-journal-pencil:hover {
+	opacity:1;
+}
+
+#close {
+	position:relative;
+	right:0px !important;
+}
+
+#success-indicate {
+	font-size:15px;
+	margin-right:20px;
+	display:inline-block;
+	position:relative;
+	top:3px;
+}
+
+.meta-info {
+	position:relative;
+	float:right;
+	top:10px;
+	right:40px;
+}
+
+#entry-create {
+	position:relative;
+	z-index:3;
+}
+
+#entry-button {
+	position:relative;
+	z-index:3;
+	margin-right:6px;
+}
+
+#location-span {
+	color:gray;
+	word-spacing:1.2pt;
+	position:relative;
+	float:left;
+	top:7px;
+	left:20px;
+	opacity:0.8;
+  font-size:14px;
+}			
+
+.icon-plus {
+	font-size:21px;
+	position:relative;
+	top:7px;
+	left:15px;
+}
+
+.icon-check-minus {
+	font-size:21px;
+	position:relative;
+	top:7px;
+	float:right;
+	right:19%;
+}
+
+.icon-search {
+	position:relative;
+	bottom:2px;
+}
+
+#list-header a {
+	color:white;
+}
+
+#list-header a:hover {
+	color:#c0392b;
+}
+
+#nav-search-icon {
+	position:absolute;
+	left:105px;
+	bottom:11px;
+	font-size:17px;
+}
+
+.icons {
+	color:#bdc3c7;
+	font-size:21px;
+	position:relative;
+	bottom:12px;
+}
+
+.icons:hover {
+	color:black;
+}
+
+#save-entry {
+	border-left:none;
+	border-right:1px solid rgba(189, 195, 199, 0.8);
+}
+
+.icon-archive {
+	position:relative;
+	top:2px;
+	left:13px;
+	font-size:20px;
+}
+
+#meta-popup {
+	width:100%;
+	max-width:100px;
+	background-color:black;
+	color:white;
+	z-index:5;
+}
+
+#delete-journal {
+	position:relative;
+	bottom:43px;
+	left:160px;
+}
+
+#entry-meta .top-icons {
+	border-left:none !important;
+	border-right:none !important;
+}
+
+#folder-left {
+	width:100%;
+	position:relative;
+	float:left;
+	max-width:170px;
+	text-overflow:ellipsis;
+}
+
+#journal-location {
+	color:#000;
+	font-weight:700;
+}
+
+#preview-text {
+	white-space:nowrap;
+	width:300px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display:inline;
+	position:relative;
+	top:5px;
+}
+
+#preview-parent-top {
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:103px;
+	background-color:white;
+	border-bottom:1px solid rgba(189, 195, 199, 0.8);
+	box-shadow:1px 1px 2px 0px #bdc3c7;
+}
+
+#preview-parent-bottom {
+	position:relative;
+	bottom:15px;
+	left:15px;
+	width:75%;
+}
+
+#parent-preview {
+	color:gray;
+	font-weight:800;
+	margin-right:5px;
+}
+
+#submission-parent-link {
+	font-size:0.6em;
+	margin-left:5px;
+}
+
+.icon-link {
+	font-size:0.5em;
+	margin-left:7px;
+}
+
+#parent-stats {
+	position:relative;
+	float:right;
+	bottom:20px;
+	font-size:1.2em;
+	font-weight:600;
+	color:gray;
+}
+
+#parent-updated {
+	display:inline-block;
+	position:relative;
+	bottom:23px;
+	font-size:.7em;
+	color:gray;
+}
+
+#journal-title {
+	font-size:14px;
+	position:relative;
+  font-weight:600;
+  padding:8px 0 4px 13px;
+}
+
+#hide-column {
+  position:absolute;
+  left:24%;
+  top:0;
+  bottom:0;
+  width:15px;
+  max-width:15px;
+  background-color:black;
+}
+
+#journal-container-bottom {
+  color:gray;
+  font-size:18px;
+  line-height:1.5;
+  font-weight:500;
+  position:relative;
+  text-align:center;
+  margin-top:7px;
+  font-size:15px;
+}
+
+#above-container-footer {
+  width:50%;
+  margin-left:25%;
+  position:relative;
+  margin-bottom:0;
+}
+
+.journal-metadata {
+  font-size:12px;
+  font-weight:400;
+  color:#77808c;
+  position:relative;
+  bottom:3px;
+}
+
+.post-container {
+  padding:8x 0 8px 13px !important;
+}
+
+.icon-fullscreen {
+  color:rgb(189, 195, 199);
+  position:absolute;
+  bottom:20px;
+  right:57px;
+  font-size:21px;
+}
+
+#stats-footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:10%;
+  background-color:gray;
+}

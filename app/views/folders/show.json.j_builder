@@ -1,0 +1,15 @@
+@folder do |folder|
+	folder.submissions.each do |submission|
+		key "submission_#{submission.id}" do
+			id submission.id
+			title submission.title
+			content submission.content
+		end
+	end
+	folder.children.each do |child|
+		key "child_#{child.id}" do
+			id child.id
+			title child.title
+		end
+	end
+end

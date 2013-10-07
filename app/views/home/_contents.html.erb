@@ -1,0 +1,13 @@
+
+	<% folder.submissions.each do |i| %>
+		<%= i.title %>
+		<%= i.content %>
+	<% end %>
+
+				<!-- <form id="postSubmit" action="/folders" method="post">
+					<%= hidden_field_tag :user_id, current_user.id %> 
+						<input type="text" id="titleinput" name="title" placeholder="Title it"></input>
+						<textarea id="contentinput" rows="6" name="content" placeholder="Write whatever's on your mind"></textarea> 
+						<button type="submit" class="btn btn-primary" style="margin-top:10px">Save</button>
+				</form>
+				-->

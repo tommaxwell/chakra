@@ -1,0 +1,5 @@
+<%= @folders.each do |folder| %>
+	<div class="folder">
+		<h3><%= link_to folder.title, folder %></h3>
+	</div>
+<% end %>

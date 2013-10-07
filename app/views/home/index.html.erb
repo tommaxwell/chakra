@@ -1,0 +1,88 @@
+
+<% if signed_in?(:user) %>
+
+			<div id="right-hand-column">
+          <div id="list-header">
+            <h3>My Journals</h3>
+            <a href="#" class="plus-icon md-trigger" id="create-journal" data-modal="modal-5"><i class="icon-plus"></i></a>
+          </div>
+  
+          <div id="submission-list-container">
+          <% if can? :read, Folder %>
+            <% current_user.folders.each do |folder| %>
+              <% if folder.parent_id.nil? %>
+                  <%= content_tag :div, :data => {:id => folder.id }, class: 'post-container' do %>
+                    <div id="journal-title"><%= folder.title %>
+                      <% if folder.children.count + folder.submissions.count == 0 %>
+                        <p class="journal-metadata">Empty! Create journals & entries</p>
+                      <% else %>
+                        <p class="journal-metadata"><%= folder.children.count %> Journals & <%= folder.submissions.count %> Entries</p>
+                      <% end %>
+                    </div>
+                  <% end %>
+              <% else %>
+              <% end %>
+          <% end %>
+          <% end %>
+            
+            <hr id="above-container-footer">
+            <h2 id="journal-container-bottom">Select a journal or<br/> <a href="#">create a new one.</a></h2>
+  
+          </div>
+  
+          <div id="fixed-bottom-container">
+            <h3>chakra</h3>
+            <ul id="footer-links">
+              <li><a>About ·</a></li>
+              <li><a>Terms ·</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
+          
+        </div>
+
+
+			<div class="md-modal md-effect-5" id="modal-5">
+			    <div class="md-content">
+			        <h3>Create a Journal</h3>
+			        <div>
+			      <form id="journal-form" action="/folders" method="post">
+							<%= hidden_field_tag :user_id, current_user.id %> 
+							<input type="text" id="titleinput" name="title" placeholder="Title it"></input>
+							<button type="submit" class="md-close folder-create">Create</button>
+						</form>
+			        </div>
+			    </div>
+			</div>
+
+			<div class="md-overlay"></div>
+
+
+<% else %>
+
+
+<div id="intro_page_center">
+	<h2 id="big_intro">Explore your mind.</h2>
+	<p>Metastory is a journal that helps to improve your life, everyday.</p>
+	<div id="registration_login">
+		<a href="users/sign_in" class="sign_in_up">Log in</a>
+		<a href="users/sign_up" class="sign_in_up">Sign up</a>
+	</div>
+	<div id="about_container">
+		<ul id="about_braindb">
+			<li>
+				<h3>Save <small>Save stories, videos, recipes, and anything else that defines you.</small></h3>
+			</li>
+			<li>
+				<h3>Learn <small>Discover patterns, connections, and meaningful context in everything you save to BrainDB.</small></h3>
+			</li>
+			<li>
+				<h3>Grow <small>Utilize your newfound abilities to read your subconcious through idea generation, collaboration, and more.</small></h3>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<%= flash[:notice] %>
+
+<% end %>

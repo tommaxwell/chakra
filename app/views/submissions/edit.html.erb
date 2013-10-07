@@ -1,0 +1,11 @@
+<%= form_for(@submission, :html => {:class => "edit_form"}, :url => {:action => 'update', :id => @submission.id}) do |f| %>
+
+	<label for="titleInput">Title</label>
+	<%= f.text_field :title, :label => 'Title', :class => 'titleInput' %>
+	<label for="contentInput">Content</label>
+	<%= f.text_area :content, :label => 'Content', :class => 'contentInput', :cols => "20", :rows => "10" %>
+	<%= f.button :submit, :value => 'Save', :class => "small button edit_butt"%>
+
+<% end %>
+
+<a id="edit_return" href="/">Return to home</a>

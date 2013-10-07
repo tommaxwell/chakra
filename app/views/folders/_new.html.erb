@@ -1,0 +1,25 @@
+
+<div id="new-journal-partial">
+	<a href="#" id="close-button">Close</a>
+	<form id="journal-form-2" action="/folders" method="post">
+		<%= hidden_field_tag :user_id, current_user.id %> 
+		<input type="text" id="titleinput" name="title" placeholder="Title"></input>
+		<button type="submit" class="md-close folder-create" id="folder-create">Create</button>
+	</form>
+</div>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+   		$("#close-button").click(function(){
+   			$('#new-journal-partial').remove();
+   		});
+
+   		$("#folder-create").click(function(){
+   			("#new-journal-partial").remove();
+   		});
+	});
+
+
+</script>
