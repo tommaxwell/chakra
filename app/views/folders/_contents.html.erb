@@ -20,7 +20,11 @@
 			</div>
 			<svg id="submission-circles"></svg>
       <div id="stats-footer">
-        <h3 id="word-count"></h3>
+        <span id="overview-title">Overview</span>
+        <ul id="journal-stats">
+          <li id="word-count"></li>
+          <li id="character-count"></li>
+        </ul>
       </div>
 		</div>
 
@@ -95,7 +99,18 @@
           wordCount += theWords.length;
         <% end %>
       <% end %>
-      $("#word-count").text(wordCount + " Words");
+      $("#word-count").text(wordCount + " words");
+        
+      var characterCount = 0;
+      <% @folder.submissions.each do |x| %>
+        <% if x.content.nil? %>
+          characterCount += 0;
+        <% else %>
+          var theCharacters = <%= x.content.size %>;
+          characterCount += theCharacters;
+        <% end %>
+      <% end %>
+      $("#character-count").text(characterCount + " characters");
         
     };
       

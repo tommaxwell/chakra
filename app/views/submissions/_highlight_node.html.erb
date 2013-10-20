@@ -9,9 +9,10 @@
       <span style="color:white">Saved Successfully.</span>
     </div>
 	</div>
+  <h3 id="highlighted"></h3>
 	<div id="entry-edit-partial" class="contain-entry">
-		<div id="title-edit-partial" class="title-partial" name="title" contenteditable="true" style="color:black" data-placeholder="Title here (optional)"></div>
-		<div id="content-edit-partial" class="content-partial" name="content" contenteditable="true" style="color:gray" data-placeholder="Write here."></div>
+		<div id="node-title" class="title-partial" name="title" contenteditable="true" style="color:black" data-placeholder="Title here (optional)"></div>
+		<div id="node-content" class="content-partial" name="content" contenteditable="true" style="color:gray" data-placeholder="Write here."></div>
 	</div>
   <i class="icon-fullscreen"></i>
 </div>
@@ -22,7 +23,7 @@
 			type:"POST",
 			url:"/submissions/",
 			dataType:"json",
-      data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @submission.folder_id %>, parent_id: <%= @submission.id %>},
+      data: {title: $("#node-title").text(), content: $("#node-content").text(), folder_id: <%= @submission.folder_id %>, parent_id: <%= @submission.id %>},
 			complete: function(){
 				$("#saved-successfully").fadeIn( 400 ).delay( 1400 ).fadeOut( 400 );
 			}
@@ -56,8 +57,3 @@
       "top": "0"
     });
   });
-
-    
-    
-    
-</script>

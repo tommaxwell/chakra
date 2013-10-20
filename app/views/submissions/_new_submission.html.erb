@@ -11,108 +11,104 @@
     </div>
 	</div>
 	<div id="entry-edit-partial" class="contain-entry">
-		<div id="title-edit-partial" class="title-partial" name="title" contenteditable="true" style="color:black" data-placeholder="Title here (optional)"></div>
-		<div id="content-edit-partial" class="content-partial" name="content" contenteditable="true" style="color:gray" data-placeholder="Write here."></div>
+		<div id="title-edit-partial" class="title-partial" name="title" contenteditable="true" style="color:black"><%= @submission.title %></div>
+		<div id="content-edit-partial" class="content-partial" name="content" contenteditable="true" style="color:gray"><%= @submission.content %></div>
 	</div>
   <i class="icon-fullscreen"></i>
   <div id="annotate-button" style="display:none">Annotate</div>
 </div>
 
 <script type="text/javascript">
-	$("#save-edit").click(function(){
-		$.ajax({
-			type:"POST",
-			url:"/submissions/" + <%= @submission.id %>,
-			dataType:"json",
-			data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @submission.folder_id %>},
-			complete: function(){
-				$("#saved-successfully").fadeIn( 400 ).delay( 1400 ).fadeOut( 400 );
-			}
-		});
-	})
+  viewSubmission = function(){
   
-  function getSelected() {
-            if (window.getSelection) {
-                return window.getSelection();
-            }
-            else if (document.getSelection) {
-                return document.getSelection();
-            }
-            else {
-                var selection = document.selection && document.selection.createRange();
-                if (selection) {
-                  if (selection){
-                    return selection.text;
-                  }
-                }
-                return false;
-            }
-            return false;
-        };
-  
-  $("#content-edit-partial").bind("mouseup", function(){
-           if (document.getSelection) {
-              var text = getSelected();
-              if(text.anchorOffset - text.focusOffset > 0) {
-                $("#annotate-button").show();
-                $("#annotate-button").click(function(){
-                  $.get("/highlight_node/", {submission: <%= @submission.id %>}, null, "script");
-                });
-              };
-            } 
-   });
-
-	$("#delete-submission-icon").click(function(){
-		var r = window.confirm("Are you sure? This cannot be undone.");
-		if(r == true){
-			$.ajax({
-				url:"/submissions/" + $("#container-edit").attr("data-id"),
-				type: "POST",
-				dataType: "json",
-				data: {"_method": "delete"},
-				complete: function(){
-					location.href = "/"
-				}
-			});
-		}
-		else{
-
-		}
-	})
-  
-  $('#close-edit').click(function(){
-    var title = $("#title-edit-partial").text();
-    var content = $("#content-edit-partial").text();
-    if( !title && !content ) {
+    $("#save-edit").click(function(){
       $.ajax({
-        url:"/submissions/" + <%= @submission.id %>,
-        type: "POST",
-        dataType: "json",
-        data: {"_method":"delete"},
+        type:"PUT",
+        url:"/submissions/" + <%= @submission.id %> + ".json",
+        dataType:"json",
+        data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @submission.folder_id %>, id: <%= @submission.id %>},
+        complete: function(){
+          $("#saved-successfully").fadeIn( 400 ).delay( 1400 ).fadeOut( 400 );
+        }
       });
-      $("#container-edit").remove();
-    }else{
-      var r = window.confirm("Would you like to save any changes?");
+    })
+    
+    function getSelected() {
+       var text = "";
+        if (window.getSelection) {
+          text = window.getSelection().toString();            
+        } else if (document.selection && document.selection.type != "Control") {
+          text = document.selection.createRange().text;
+        }
+        return text;
+    };
+    
+    $("#content-edit-partial").bind("mouseup", function(){
+             if (document.getSelection) {
+                var text = getSelected();
+                if(text.length > 0) {
+                  $("#annotate-button").show();
+                  $("#annotate-button").click(function(){
+                    $.get("/highlight_node/", {submission: <%= @submission.id %>}, null, "script");
+                    console.log(text);
+                  });
+                };
+              } 
+     });
+  
+    $("#delete-submission-icon").click(function(){
+      var r = window.confirm("Are you sure? This cannot be undone.");
       if(r == true){
         $.ajax({
-          type:"POST",
-          url:"/submissions/" + <%= @submission.id %>,
-          dataType:"json",
-          data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @submission.folder_id %>}
+          url:"/submissions/" + $("#container-edit").attr("data-id") + ".json",
+          type: "PUT",
+          dataType: "json",
+          data: {"_method": "delete"},
+          complete: function(){
+            location.href = "/"
+          }
+        });
+      }
+      else{
+  
+      }
+    })
+    
+    $('#close-edit').click(function(){
+      var title = $("#title-edit-partial").text();
+      var content = $("#content-edit-partial").text();
+      if( !title && !content ) {
+        $.ajax({
+          url:"/submissions/" + <%= @submission.id %> + ".json",
+          type: "PUT",
+          dataType: "json",
+          data: {"_method":"delete"},
         });
         $("#container-edit").remove();
       }else{
-        $("#container-edit").remove();
+        var r = window.confirm("Would you like to save any changes?");
+        if(r == true){
+          $.ajax({
+            type:"PUT",
+            url:"/submissions/" + <%= @submission.id %> + ".json",
+            dataType:"json",
+            data: {title: $("#title-edit-partial").text(), content: $("#content-edit-partial").text(), folder_id: <%= @submission.folder_id %>}
+          });
+          $("#container-edit").remove();
+        }else{
+          $("#container-edit").remove();
+        };
       };
-    };
-  });
-    
-  $(".icon-fullscreen").click(function(){
-    $(".entry-window").css({
-      "max-width":"100%",
-      "top": "0"
     });
-  });
+      
+    $(".icon-fullscreen").click(function(){
+      $(".entry-window").css({
+        "max-width":"100%",
+        "top": "0"
+      });
+    });
+      
+  };
 
     
     

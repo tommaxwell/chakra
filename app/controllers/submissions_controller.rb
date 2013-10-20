@@ -62,19 +62,7 @@ class SubmissionsController < ApplicationController
 	end
 
 	def update
-		[:title, :content].each do |attribute|
-			params[attribute] = params["new_#{attribute}".to_sym] unless params["new_#{attribute}".to_sym].blank?
-		end
-
-		respond_to do |format|
-			if @submission.update_attributes(params[:submission])
-				format.html {redirect_to @submission, notice: "Submission updated."}
-				format.json { render json: @submission}
-			else
-				format.html {render action: "edit"}
-				format.json {render json: @submission.errors, status: :unprocessable_entity}
-			end
-		end
+    Submission.find(params[:id]).update_attributes(:title => params[:title], :content => params[:content])
 	end
 
 	def usercontent
@@ -96,8 +84,8 @@ class SubmissionsController < ApplicationController
 	def new_submission
 		@submission = Submission.find(params[:submission])
 		respond_to do |format|
-			format.html
 			format.js
+      format.html
 		end
 	end
 
@@ -116,6 +104,7 @@ class SubmissionsController < ApplicationController
   
   def highlight_node
     @submission = Submission.find(params[:submission])
+    @text = params[:selectedText]
     respond_to do |format|
       format.js
       format.html
