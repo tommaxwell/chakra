@@ -7,9 +7,9 @@ input, select, textarea, button {
 }
 
 input[type="text"] {
-	height:27px !important;
-	font-size:16px;
-	padding:4px 8px;
+	height:25px !important;
+	font-size:14px;
+	padding:4px 10px;
 	word-spacing:1pt;
 	padding-bottom:6px;
 }
@@ -548,16 +548,15 @@ button {
 }
 
 .navbar-form {
-	position:relative;
-	width:100%;
-	max-width:100px;
-	left:120px;
-	bottom:49px;
+	position:absolute;
+  width:100%;
+  max-width:170px;
+  right:155px;
+  top:2px;
 }
 
 .form-field {
 	height:30px !important;
-	border-radius:5px;
 }
 
 .form-field:focus {
@@ -570,10 +569,6 @@ button {
 
 .form-search {
 	height:27px;
-}
-
-#search {
-	border-radius:5px;
 }
 
 .btn-edit {
@@ -759,7 +754,7 @@ button {
 	font-size:21px;
 	position:relative;
 	top:7px;
-	left:15px;
+	left:16px;
 }
 
 .icon-check-minus {
@@ -770,24 +765,12 @@ button {
 	right:19%;
 }
 
-.icon-search {
-	position:relative;
-	bottom:2px;
-}
-
 #list-header a {
 	color:white;
 }
 
 #list-header a:hover {
 	color:#c0392b;
-}
-
-#nav-search-icon {
-	position:absolute;
-	left:105px;
-	bottom:11px;
-	font-size:17px;
 }
 
 .icons {
@@ -964,6 +947,44 @@ button {
   position:absolute;
   bottom:0;
   width:100%;
-  height:10%;
-  background-color:gray;
+  height:70px;
+  background-color:rgba(189, 195, 199, 0.298039);
+  border-top:1px solid rgba(189, 195, 199, 0.6);
+}
+
+#overview-title {
+  color:rgb(67,84,82);
+  position:relative;
+  left:13px;
+  top:21px;
+  font-weight:600;
+}
+
+#word-count {
+  color:#999;
+  font-size:18px;
+  left:100px;
+  height:100%;
+  top:0;
+  position:absolute;
+  margin-top:0;
+  padding:21px 10px 0 10px;
+  border-left:1px solid rgba(189, 195, 199, 0.8);
+  border-right:1px solid rgba(189, 195, 199, 0.8);
+}
+
+#journal-stats {
+  list-style-type:none;
+}
+
+#character-count {
+  position:absolute;
+  top:0;
+  height:100%;
+  margin-top:0;
+  color:#999;
+  font-size:18px;
+  left:184px;
+  padding:21px 10px 0 10px;
+  border-right:1px solid rgba(189, 195, 199, 0.8);
 }
