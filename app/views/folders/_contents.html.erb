@@ -19,6 +19,16 @@
         </ul>
 			</div>
 			<svg id="submission-circles"></svg>
+      <div id="textual-submission-view">
+        <%= @folder.submissions.each do |x| %>
+          <% if x.title != nil %>
+            <div id="<%= x.id %>" class="submission-textual">
+              <h1><%= x.title %></h1>
+            </div>
+          <% else %>
+          <% end %>
+        <% end %>
+      </div>
       <div id="stats-footer">
         <span id="overview-title">Overview</span>
         <ul id="journal-stats">
