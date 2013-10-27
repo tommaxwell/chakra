@@ -557,6 +557,7 @@ button {
 
 .form-field {
 	height:30px !important;
+  border-radius:0 !important;
 }
 
 .form-field:focus {
@@ -987,4 +988,8 @@ button {
   left:184px;
   padding:21px 10px 0 10px;
   border-right:1px solid rgba(189, 195, 199, 0.8);
+}
+
+.submission-textual {
+  border:1px solid black;
 }
